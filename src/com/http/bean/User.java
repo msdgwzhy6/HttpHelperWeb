@@ -10,6 +10,16 @@ public class User {
     private Date birthday;
 	private String password;
 	private Integer age;
+	private String msg;
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String paramMsg) {
+		msg = paramMsg;
+	}
+
 	public String getName() {
 		return name;
 	}

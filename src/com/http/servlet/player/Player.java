@@ -1,4 +1,4 @@
-package com.http.servlet;
+package com.http.servlet.player;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
