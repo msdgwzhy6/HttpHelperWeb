@@ -3,12 +3,28 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <!--在web.xml中完成的一个最常见的任务是对servlet或JSP页面给出名称和定制的URL。
+    用servlet元素分配名称；
+    使用servlet-mapping元素将定制的URL与刚分配的名称相关联（映射）。
+    -->
+
     <servlet>
         <servlet-name>MyServlet</servlet-name>
-        <servlet-class>com.http.servlet.MyServlet</servlet-class>
+        <servlet-class>com.http.servlet.UserLogin</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
-        <url-pattern>/MyServlet</url-pattern>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VideoPlayer</servlet-name>
+        <servlet-class>com.http.servlet.Player</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VideoPlayer</servlet-name>
+        <url-pattern>/player/video</url-pattern>
     </servlet-mapping>
 </web-app>
