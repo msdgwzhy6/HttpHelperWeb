@@ -35,7 +35,6 @@
         <jarDirectory url="file://$MODULE_DIR$/web/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Tomcat6.0" level="application_server_libraries" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.0.M22" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 6.0.53" level="application_server_libraries" />
   </component>
 </module>

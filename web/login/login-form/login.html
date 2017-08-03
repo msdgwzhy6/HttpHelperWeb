@@ -5,23 +5,24 @@
     <title>登录</title>
     <link type="text/css" rel="stylesheet" href="./login/login-form/css/style.css">
 
-    <script type="text/javascript"  src="js/login.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 </head>
 
-<body >
+<body>
 
 <div class="container">
 
-    <div id="login" >
+    <div id="login">
 
         <h2><span class="fontawesome-lock"></span>用户登录</h2>
         <!--servlet 就在项目的根目录下-->
-        <form action="./register" method="POST" id="login_form">
+        <form action="login" method="POST" id="login_form">
 
             <fieldset>
 
                 <p><label for="account">Account</label></p>
-                <p><input type="text" id="account" placeholder="请输入账号" style="background: cornsilk;width: 200px;height: 30px"></p>
+                <p><input type="text" id="account" placeholder="请输入账号"
+                          style="background: cornsilk;width: 200px;height: 30px"></p>
 
                 <p><label for="password">Password</label></p>
                 <p><input type="password" id="password" placeholder="请输入密码" style="width: 200px;height: 30px"></p>

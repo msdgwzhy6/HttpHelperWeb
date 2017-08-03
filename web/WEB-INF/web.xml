@@ -16,12 +16,12 @@
     <!--用户登录-->
     <servlet>
         <servlet-name>UserLogin</servlet-name>
-        <servlet-class>com.http.servlet.login.UserLogin</servlet-class>
+        <servlet-class>com.http.servlet.login.UserLoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
     <!--视频播放-->
