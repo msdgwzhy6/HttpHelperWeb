@@ -1,6 +1,6 @@
 package com.http.bean;
 
-public class UserLogin {
+public class UserLoginInfo {
 
 	private String mMsg;//用户登反馈信息描述
 	private String mErrorCode;//登录反馈信息码
