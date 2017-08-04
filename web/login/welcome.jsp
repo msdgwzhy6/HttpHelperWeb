@@ -10,7 +10,7 @@
 <head>
     <title>登录界面</title>
     <link rel="stylesheet" href="login-form/css/style.css">
-    <script type="text/javascript" src="../js/login.js"></script>
+    <script type="text/javascript" src="../js/user/login.js"></script>
 </head>
 <body >
 

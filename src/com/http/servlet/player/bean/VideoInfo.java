@@ -1,4 +1,4 @@
-package com.http.bean;
+package com.http.servlet.player.bean;
 
 import java.io.Serializable;
 

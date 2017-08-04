@@ -1,9 +1,9 @@
-package com.http.constant;
+package com.http.crud.user.constant;
 
 /**
  * Created by smart on 2017/8/3.
  */
-public class CodeInfo {
+public class LoginInfo {
     /*
     * 错误码
     * */

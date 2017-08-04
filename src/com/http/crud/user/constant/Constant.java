@@ -1,4 +1,4 @@
-package com.http.constant;
+package com.http.crud.user.constant;
 
 /**
  * Created by smart on 2017/8/2.

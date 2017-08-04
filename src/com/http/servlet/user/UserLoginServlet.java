@@ -1,14 +1,19 @@
-package com.http.servlet.login;
+package com.http.servlet.user;
 
-import com.http.bean.user.UserBean;
-import com.http.bean.user.UserLoginInfo;
-import com.http.dao.user.UserInfoDao;
+import com.http.crud.user.UserInfoCRUD;
+import com.http.crud.user.bean.UserBean;
+import com.http.crud.user.bean.UserLoginInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStream;
+
+import static com.http.crud.user.constant.Constant.CHART_SET_ISO_8859_1;
+import static com.http.crud.user.constant.Constant.CHART_SET_UTF_8;
+import static com.http.crud.user.constant.Constant.CONTENT_TYPE;
 
 /**
  * Servlet implementation class UserLoginServlet
@@ -22,7 +27,7 @@ public class UserLoginServlet extends HttpServlet {
      * @throws ServletException if an error occurs
      */
     public void init() throws ServletException {
-        System.out.println("处室执行！！！！！！！！！！！！！！！");
+        log("登录！！！！！！！！！！！！！！！");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,35 +35,45 @@ public class UserLoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserBean lUserBean = new UserBean();
-        lUserBean.setUser_account("张敏");
-        lUserBean.setUser_password("1024");
-        lUserBean.setUser_age(25);
-        System.out.println(new UserInfoDao().insert(lUserBean));
-       /* String account = request.getParameter("account");
+        response.setContentType(CONTENT_TYPE);
+        OutputStream outputStream = response.getOutputStream();
 
+        String account = new String(request.getParameter("account").getBytes(CHART_SET_ISO_8859_1),CHART_SET_UTF_8);
         String password = request.getParameter("password");
+//        int age = Integer.parseInt(request.getParameter("age"));
+        /*信息检查*/
+        if (password == null) {
+            outputStream.write("您的账号或密码输入为空！".getBytes());
+            return;
+        }
+        /*信息验证*/
+
+        UserBean userBean = new UserBean();
+        userBean.setName(account);
+        userBean.setPassword(password);
+        userBean.setPassword(password);
+//        userBean.setAge(age);
+        outputStream.write(new UserInfoCRUD().select(account, password).getMsg().getBytes());
+       /*
 
         *//*
         * 去数据库查询用户信息
         * *//*
 
         String userJson = "";
-        response.setContentType(CONTENT_TYPE);
 
-        OutputStream outputStream = response.getOutputStream();
 
-        userJson = JSON.toJSONString(buildUserDO(CodeInfo.CODE_LOGIN_ERROR, CodeInfo.INFO_LOGIN_ERROR));
 
-        outputStream.write(userJson.getBytes(CHART_SET_UTF_8));
+
+        userJson = JSON.toJSONString(buildUserDO(LoginInfo.CODE_LOGIN_ERROR, LoginInfo.INFO_LOGIN_ERROR));
+
+
         outputStream.flush();
         outputStream.close();*/
     }
 
     private UserLoginInfo buildUserDO(String errorCode, String msg) {
         UserLoginInfo user = new UserLoginInfo();
-        user.setErrorCode(errorCode);
-        user.setMsg(msg);
         return user;
     }
 

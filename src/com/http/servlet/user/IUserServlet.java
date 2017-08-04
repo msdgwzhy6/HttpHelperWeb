@@ -1,4 +1,4 @@
-package com.http.servlet.login;
+package com.http.servlet.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by smart on 2017/8/3.
  */
-public interface IUserLoginServlet {
+public interface IUserServlet {
     // 新增
     void insert(HttpServletRequest request, HttpServletResponse response)
             throws IOException;
