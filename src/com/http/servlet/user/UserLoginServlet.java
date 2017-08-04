@@ -1,10 +1,10 @@
 package com.http.servlet.user;
 
 import com.alibaba.fastjson.JSON;
+import com.http.constant.Code;
 import com.http.dao.user.UserInfoDao;
 import com.http.dao.user.bean.UserBean;
 import com.http.dao.user.bean.UserLoginInfo;
-import com.http.constant.Code;
 import com.http.util.Util;
 
 import javax.servlet.ServletException;
@@ -37,11 +37,11 @@ public class UserLoginServlet extends HttpServlet  {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding(CHART_SET_UTF_8);
         response.setContentType(CONTENT_TYPE);
 
+
         OutputStream outputStream = response.getOutputStream();
-        String account = new String(request.getParameter("account").getBytes(), CHART_SET_UTF_8);//账号
+        String account = new String(request.getParameter("account").getBytes(CHART_SET_ISO_8859_1), CHART_SET_UTF_8);//账号
         String password = request.getParameter("password");//密码
 
         UserInfoDao userInfoDao = new UserInfoDao();//业务类
@@ -92,7 +92,14 @@ public class UserLoginServlet extends HttpServlet  {
                 //更新
                 break;
         }
-        outputStream.write(jsonBytes);//输出响应数据
+        if (jsonBytes != null) {
+            outputStream.write(jsonBytes);//输出响应数据
+        }else {
+            userLoginInfo = new UserLoginInfo();
+            userLoginInfo.setUserLoginInfo(Code.CODE_SERVER_ERROR,Code.INFO_SERVER_ERROR);
+            jsonBytes = JSON.toJSONString(userLoginInfo).getBytes(CHART_SET_UTF_8);
+            outputStream.write(jsonBytes);//输出响应数据
+        }
         outputStream.flush();
         outputStream.close();
     }
