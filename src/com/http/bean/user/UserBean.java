@@ -1,4 +1,4 @@
-package com.http.bean;
+package com.http.bean.user;
 
 /**
  * Created by smart on 2017/8/3.
@@ -6,7 +6,7 @@ package com.http.bean;
 public class UserBean {
     private String user_account;
     private String user_password;
-    private String user_age;
+    private int user_age;
 
     public String getUser_account() {
         return user_account;
@@ -24,11 +24,11 @@ public class UserBean {
         user_password = pUser_password;
     }
 
-    public String getUser_age() {
+    public int  getUser_age() {
         return user_age;
     }
 
-    public void setUser_age(String pUser_age) {
+    public void setUser_age(int pUser_age) {
         user_age = pUser_age;
     }
 }

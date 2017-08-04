@@ -24,6 +24,7 @@ public class DBConnection {
       Class.forName(driverName); 
       // 2. 连接数据库 保持连接 
       con = DriverManager.getConnection(url);
+      System.out.println("连接成功！");
     } catch (ClassNotFoundException e) { 
       // TODO Auto-generated catch block 
       e.printStackTrace(); 

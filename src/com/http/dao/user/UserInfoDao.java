@@ -1,6 +1,6 @@
 package com.http.dao.user;
 
-import com.http.bean.UserBean;
+import com.http.bean.user.UserBean;
 import com.http.dao.connect.DBConnection;
 
 import java.sql.Connection;
@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 /**
  * Created by smart on 2017/8/3.
+ * function：对用户信息的 CRUD 操作
  */
 public class UserInfoDao implements IUserInfoDao {
     @Override
@@ -22,14 +23,16 @@ public class UserInfoDao implements IUserInfoDao {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userBean.getUser_account());
             pstmt.setString(2, userBean.getUser_password());
-            pstmt.setString(3, userBean.getUser_age());
+            pstmt.setInt(3, userBean.getUser_age());
             count = pstmt.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             try {
-                pstmt.close();
+                if (pstmt != null) {
+                    pstmt.close();
+                }
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -48,14 +51,14 @@ public class UserInfoDao implements IUserInfoDao {
     public int update(UserBean userBean) {
         Connection con = DBConnection.getConnection();
         PreparedStatement pstmt = null;
-        String sql = " update users " + " set user_name = ? , " + " pwd = ? , "
-                + " display_name= ? " + " where id= ? ";
+        String sql = " update users " + " set user_account = ? , " + " user_password = ? , "
+                + " user_age= ? " + " where id= ? ";
         int count = 0;
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userBean.getUser_account());
             pstmt.setString(2, userBean.getUser_password());
-            pstmt.setString(3, userBean.getUser_age());
+            pstmt.setInt(3, userBean.getUser_age());
             count = pstmt.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block

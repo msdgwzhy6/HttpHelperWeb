@@ -1,6 +1,6 @@
 package com.http.dao.user;
 
-import com.http.bean.UserBean;
+import com.http.bean.user.UserBean;
 
 /**
  * Created by smart on 2017/8/3.

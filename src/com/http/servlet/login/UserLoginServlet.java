@@ -1,18 +1,14 @@
 package com.http.servlet.login;
 
-import com.alibaba.fastjson.JSON;
-import com.http.bean.UserLoginInfo;
-import com.http.constant.CodeInfo;
+import com.http.bean.user.UserBean;
+import com.http.bean.user.UserLoginInfo;
+import com.http.dao.user.UserInfoDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStream;
-
-import static com.http.constant.Constant.CHART_SET_UTF_8;
-import static com.http.constant.Constant.CONTENT_TYPE;
 
 /**
  * Servlet implementation class UserLoginServlet
@@ -20,19 +16,32 @@ import static com.http.constant.Constant.CONTENT_TYPE;
 public class UserLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Initialization of the servlet. <br>
+     *
+     * @throws ServletException if an error occurs
+     */
+    public void init() throws ServletException {
+        System.out.println("处室执行！！！！！！！！！！！！！！！");
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String account = request.getParameter("account");
+        UserBean lUserBean = new UserBean();
+        lUserBean.setUser_account("张敏");
+        lUserBean.setUser_password("1024");
+        lUserBean.setUser_age(25);
+        System.out.println(new UserInfoDao().insert(lUserBean));
+       /* String account = request.getParameter("account");
 
         String password = request.getParameter("password");
 
-        /*
+        *//*
         * 去数据库查询用户信息
-        * */
+        * *//*
 
         String userJson = "";
         response.setContentType(CONTENT_TYPE);
@@ -43,7 +52,7 @@ public class UserLoginServlet extends HttpServlet {
 
         outputStream.write(userJson.getBytes(CHART_SET_UTF_8));
         outputStream.flush();
-        outputStream.close();
+        outputStream.close();*/
     }
 
     private UserLoginInfo buildUserDO(String errorCode, String msg) {
@@ -52,6 +61,7 @@ public class UserLoginServlet extends HttpServlet {
         user.setMsg(msg);
         return user;
     }
+
     // 新增
     private void insert(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -70,6 +80,7 @@ public class UserLoginServlet extends HttpServlet {
         // 将受影响数据的数量返回给jsp
         out.print(affCount);*/
     }
+
     // 删除
     private void delete(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -82,15 +93,7 @@ public class UserLoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.print(count);*/
     }
-    /**
-     * Initialization of the servlet. <br>
-     *
-     * @throws ServletException
-     *       if an error occurs
-     */
-    public void init() throws ServletException {
-        System.out.println("处室执行！！！！！！！！！！！！！！！");
-    }
+
     // 查询
     public void select(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -111,6 +114,7 @@ public class UserLoginServlet extends HttpServlet {
         // 将json数据返回给jspData-grid的url。
         out.println(jo.toString());*/
     }
+
     // 修改
     public void update(HttpServletRequest request, HttpServletResponse response)
             throws IOException {

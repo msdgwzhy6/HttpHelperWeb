@@ -1,4 +1,4 @@
-package com.http.bean;
+package com.http.bean.user;
 
 public class UserLoginInfo {
 
