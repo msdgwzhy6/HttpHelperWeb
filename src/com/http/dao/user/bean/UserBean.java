@@ -1,4 +1,4 @@
-package com.http.crud.user.bean;
+package com.http.dao.user.bean;
 
 /**
  * Created by smart on 2017/8/3.

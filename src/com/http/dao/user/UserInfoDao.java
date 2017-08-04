@@ -1,23 +1,24 @@
-package com.http.crud.user;
+package com.http.dao.user;
 
-import com.http.crud.user.bean.UserBean;
-import com.http.crud.user.bean.UserLoginInfo;
-import com.http.crud.user.constant.LoginInfo;
+import com.http.dao.user.bean.UserBean;
+import com.http.dao.user.bean.UserLoginInfo;
+import com.http.constant.Code;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.http.crud.user.util.UtilUserInfoCRUD.*;
+import static com.http.dao.user.util.UtilUserInfo.*;
 import static com.http.util.Util.logInfo;
 
 /**
  * Created by smart on 2017/8/3.
  * function：对用户信息的 CRUD 操作
  */
-public class UserInfoCRUD implements IUserInfoCRUD {
+public class UserInfoDao implements IUserInfo {
     @Override
     public int insert(UserBean userBean) {
         String sql = " insert into users(name,password,age) values(?,?,?)";
+
         return add(sql, userBean);
     }
 
@@ -46,14 +47,14 @@ public class UserInfoCRUD implements IUserInfoCRUD {
                     loop = false;
                     logInfo("数据校验！" + resultSet.getString("password"));
                     if (!password.equals(resultSet.getString("password"))) {
-                        userLoginInfo.setUserLoginInfo(LoginInfo.CODE_PASSWORD_ERROR, LoginInfo.INFO_PASSWORD_ERROR);
+                        userLoginInfo.setUserLoginInfo(Code.CODE_PASSWORD_ERROR, Code.INFO_PASSWORD_ERROR);
                     } else {
-                        userLoginInfo.setUserLoginInfo(LoginInfo.CODE_LOGIN_SUCCESS, LoginInfo.INFO_LOGIN_SUCCESS);
+                        userLoginInfo.setUserLoginInfo(Code.CODE_LOGIN_SUCCESS, Code.INFO_LOGIN_SUCCESS);
                     }
                 } else {
                     loop = false;
                     logInfo("账号不存在");
-                    userLoginInfo.setUserLoginInfo(LoginInfo.CODE_ACCOUNT_NOT_EXIST, LoginInfo.INFO_ACCOUNT_NOT_EXIST);
+                    userLoginInfo.setUserLoginInfo(Code.CODE_ACCOUNT_NOT_EXIST, Code.INFO_ACCOUNT_NOT_EXIST);
                 }
             }
 

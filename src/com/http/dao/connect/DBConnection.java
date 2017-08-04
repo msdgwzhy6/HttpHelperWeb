@@ -1,4 +1,4 @@
-package com.http.crud.connect;
+package com.http.dao.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

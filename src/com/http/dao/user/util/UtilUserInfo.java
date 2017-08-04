@@ -1,7 +1,7 @@
-package com.http.crud.user.util;
+package com.http.dao.user.util;
 
-import com.http.crud.user.bean.UserBean;
-import com.http.crud.connect.DBConnection;
+import com.http.dao.user.bean.UserBean;
+import com.http.dao.connect.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +12,9 @@ import static com.http.util.Util.logInfo;
 
 /**
  * Created by smart on 2017/8/4.
- * function： 工具类，对 用户信息的 crud 操作
+ * function： 工具类，对 用户信息的 dao 操作
  */
-public class UtilUserInfoCRUD {
+public class UtilUserInfo {
 
     public static int add(String sql, UserBean userBean) {
 

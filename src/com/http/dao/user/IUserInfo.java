@@ -1,12 +1,12 @@
-package com.http.crud.user;
+package com.http.dao.user;
 
-import com.http.crud.user.bean.UserBean;
-import com.http.crud.user.bean.UserLoginInfo;
+import com.http.dao.user.bean.UserBean;
+import com.http.dao.user.bean.UserLoginInfo;
 
 /**
  * Created by smart on 2017/8/3.
  */
-public interface IUserInfoCRUD {
+public interface IUserInfo {
     /** 向数据库增加一条记录
      * @param userBean 用户
      */
