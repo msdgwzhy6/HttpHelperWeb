@@ -18,9 +18,10 @@ import static com.http.constant.Constant.*;
 import static com.http.util.Util.logInfo;
 
 /**
- * Servlet implementation class UserLoginServlet
+ * Created by smart on 2017/8/4.
+ * function：
  */
-public class UserLoginServlet extends HttpServlet  {
+public class UserInfoServlet extends HttpServlet  {
     private static final long serialVersionUID = 1L;
 
     /**

@@ -16,21 +16,12 @@
     <!--用户登录-->
     <servlet>
         <servlet-name>UserLogin</servlet-name>
-        <servlet-class>com.http.servlet.user.UserLoginServlet</servlet-class>
+        <servlet-class>com.http.servlet.user.UserInfoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/user/login</url-pattern>
-    </servlet-mapping>
-    <!--用户注册-->
-    <servlet>
-        <servlet-name>UserRegisterServlet</servlet-name>
-        <servlet-class>com.http.servlet.user.UserRegisterServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UserRegisterServlet</servlet-name>
-        <url-pattern>/user/register</url-pattern>
     </servlet-mapping>
 
     <!--视频播放-->
