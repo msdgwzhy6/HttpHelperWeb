@@ -63,7 +63,6 @@ public class UserInfoServlet extends HttpServlet  {
             outputStream.write(jsonBytes);
         }
         String tag = request.getParameter("tag");
-        log(tag);
         switch (tag) {
             case TAG_LOGIN:
                 userLoginInfo = userInfoDao.select(account, password);
