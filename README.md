@@ -10,7 +10,13 @@
 
 2、修改表中的字段的字符集 
 
-    mysql> alter table users modify user_account varchar(20) character set utf8;
+    mysql> alter table users modify user_account varchar(20) character set utf8; 
+3、Android网络编程之使用get方式向服务端提交数据和乱码问题的解决 
+
+    //提交的数据需要进行URL编码，字母和数字编码后都不变 
+    String path = "http://192.168.252.1:8080/web/LoginServlet?name="+URLEncoder.encode(name)+"&password="+pass;
+      
+
 ##### QQ：交流群 ：192268854
 ![](https://github.com/Xbean1024/XHttp/blob/master/gif/QQ.JPG)
 
