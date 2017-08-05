@@ -8,27 +8,24 @@ public class UserBean {
     private String password;
     private int age;
 
+    public UserBean(String name, String password, int age) {
+        this.name = name;
+        this.password = password;
+        this.age = age;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String pUser_account) {
-        name = pUser_account;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String pUser_password) {
-        password = pUser_password;
-    }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int pUser_age) {
-        age = pUser_age;
-    }
 }

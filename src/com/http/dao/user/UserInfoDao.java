@@ -41,21 +41,16 @@ public class UserInfoDao implements IUserInfo {
         ResultSet resultSet = query(name);
         UserLoginInfo userLoginInfo = new UserLoginInfo();
         try {
-            boolean loop = true;
-            while (loop) {
-                if (resultSet.next()) {
-                    loop = false;
-                    logInfo("数据校验！" + resultSet.getString("password"));
-                    if (!password.equals(resultSet.getString("password"))) {
-                        userLoginInfo.setUserLoginInfo(Code.CODE_PASSWORD_ERROR, Code.INFO_PASSWORD_ERROR);
-                    } else {
-                        userLoginInfo.setUserLoginInfo(Code.CODE_LOGIN_SUCCESS, Code.INFO_LOGIN_SUCCESS);
-                    }
+            if (resultSet.next()) {
+                logInfo("数据校验！" + resultSet.getString("password"));
+                if (!password.equals(resultSet.getString("password"))) {
+                    userLoginInfo.setUserLoginInfo(Code.CODE_PASSWORD_ERROR, Code.INFO_PASSWORD_ERROR);
                 } else {
-                    loop = false;
-                    logInfo("账号不存在");
-                    userLoginInfo.setUserLoginInfo(Code.CODE_ACCOUNT_NOT_EXIST, Code.INFO_ACCOUNT_NOT_EXIST);
+                    userLoginInfo.setUserLoginInfo(Code.CODE_LOGIN_SUCCESS, Code.INFO_LOGIN_SUCCESS);
                 }
+            } else {
+                logInfo("账号不存在");
+                userLoginInfo.setUserLoginInfo(Code.CODE_ACCOUNT_NOT_EXIST, Code.INFO_ACCOUNT_NOT_EXIST);
             }
 
         } catch (SQLException e) {
