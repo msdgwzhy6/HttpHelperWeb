@@ -5,6 +5,7 @@
          version="3.1">
 
     <welcome-file-list>
+        <welcome-file>jsp/upload/upload.jsp</welcome-file>
         <welcome-file>login/login-form/login.html</welcome-file>
         <welcome-file>login/random-login-form/login.html</welcome-file>
     </welcome-file-list>
@@ -33,7 +34,7 @@
     </servlet>
     <servlet>
         <servlet-name>UploadServlet</servlet-name>
-        <servlet-class>com.http.servlet.file.UploadServlet</servlet-class>
+        <servlet-class>com.http.servlet.upload.UploadServlet</servlet-class>
     </servlet>
 
 
